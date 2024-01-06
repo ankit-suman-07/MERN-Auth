@@ -33,7 +33,7 @@ app.post('/login', async (req, res) => {
         const user = await User.findOne({ username });
 
         if (!user) {
-            return res.status(404).json({ error: 'Invalid Username or Password' })
+            return res.status(404).json({ error: 'User Not Found' })
         }
 
         if (user.password !== password) {
