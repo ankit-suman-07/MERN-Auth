@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const PORT = 8000;
 const connectDB = require('./db/dbConnection');
 const User = require('./db/user');
@@ -8,6 +9,8 @@ const User = require('./db/user');
 //Middleware for parsing json
 app.use(express.json());
 connectDB();
+
+app.use(cors());
 
 // Registration
 app.post('/register', async (req, res) => {
