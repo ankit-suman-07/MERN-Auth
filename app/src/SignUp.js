@@ -8,14 +8,17 @@ const SignUp = () => {
         password: '',
     });
 
+    const [message, setMessage] = useState("");
+
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:8000/register', signUpData);
-            //const { success, message } = response.data;
-            console.log(response.data);
+            console.log(response.data.message);
+            setMessage(response.data.message);
         } catch (error) {
-
+            console.log(error.response.data.error);
+            setMessage(error.response.data.error);
         }
         setSignUpData({
             username: '',
@@ -50,9 +53,15 @@ const SignUp = () => {
                     onChange={handleSignUpChange}
                     required
                 />
+                <p>
+                    {
+                        <span>{message}</span>
+                    }
+                </p>
                 <button type='submit' >
                     Sign Up
                 </button>
+
                 <p>
                     Already registered?
                     <Link to='/login' >

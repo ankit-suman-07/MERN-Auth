@@ -16,16 +16,8 @@ const Login = () => {
             const response = await axios.post('http://localhost:8000/login', loginData);
             const { success, message } = response.data;
             setMessage(message);
-            if (success) {
-                console.log(response.data);
-            }
-            else {
-                console.log("User not found");
-                console.log(response.data);
 
-            }
         } catch (error) {
-            console.log(error.response.data.error);
             setMessage(error.response.data.error);
         }
         setLoginData({

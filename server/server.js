@@ -17,9 +17,14 @@ app.post('/register', async (req, res) => {
     try {
         const { username, password } = req.body;
         console.log(req.body);
+        const user = await User.findOne({ username });
 
-        const user = new User({ username, password });
-        await user.save();
+        if (user) {
+            return res.status(500).json({ error: 'User already registered.' })
+        }
+
+        const newuser = new User({ username, password });
+        await newuser.save();
         res.status(201).json({ message: 'Registered successfully.' })
     } catch (error) {
         res.status(500).json({ error: 'Registration failed' });
