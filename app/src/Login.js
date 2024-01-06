@@ -19,6 +19,10 @@ const Login = () => {
         } catch (error) {
 
         }
+        setLoginData({
+            username: '',
+            password: '',
+        });
     }
 
     const handleLoginChange = (e) => {
