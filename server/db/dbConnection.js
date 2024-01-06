@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const connectDB = async () => {
     try {
-        await mongoose.connect('mongodb+srv://ankitsuman07:Silenced%408697@bookstore.cm8rbur.mongodb.net/books-collection?retryWrites=true&w=majority')
+        await mongoose.connect('mongodb+srv://ankitsuman07:Silenced%408697@bookstore.cm8rbur.mongodb.net/projects?retryWrites=true&w=majority/auth');
+        console.log('Connected to MongoDB.');
     } catch (error) {
-        console.log('Error connecting to DB!!!');
+        console.log('Error: ', error);
     }
-    console.log('Connected to MongoDB.');
-
 }
+
+module.exports = connectDB;
