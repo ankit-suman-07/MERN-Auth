@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import "./style.css";
+import PageTop from './PageTop';
 
 import Logo from "./assets/logo.jpg";
 
@@ -36,51 +37,54 @@ const SignUp = () => {
         }));
     }
     return (
-        <div className='outer' >
-            <div className='box' >
-                <div className='image' >
-                    <img src={Logo} />
-                </div>
-                <div className='form' >
-                    <div className='head' >
-                        Sign Up
+        <>
+            <PageTop />
+            <div className='outer' >
+                <div className='box' >
+                    <div className='image' >
+                        <img src={Logo} />
                     </div>
-                    <div className='inner' >
-                        <span className='error' >{message}</span>
-                        <span className='greet' >{greet}</span>
-                        <form onSubmit={handleFormSubmit} >
-                            <input
-                                type='text'
-                                name='username'
-                                placeholder='Username'
-                                value={signUpData.username}
-                                onChange={handleSignUpChange}
-                                required
-                            />
-                            <input
-                                type='password'
-                                name='password'
-                                placeholder='Password'
-                                value={signUpData.password}
-                                onChange={handleSignUpChange}
-                                required
-                            />
-                            <button type='submit' >
-                                Sign Up
-                            </button>
-                        </form>
+                    <div className='form' >
+                        <div className='head' >
+                            Sign Up
+                        </div>
+                        <div className='inner' >
+                            <span className='error' >{message}</span>
+                            <span className='greet' >{greet}</span>
+                            <form onSubmit={handleFormSubmit} >
+                                <input
+                                    type='text'
+                                    name='username'
+                                    placeholder='Username'
+                                    value={signUpData.username}
+                                    onChange={handleSignUpChange}
+                                    required
+                                />
+                                <input
+                                    type='password'
+                                    name='password'
+                                    placeholder='Password'
+                                    value={signUpData.password}
+                                    onChange={handleSignUpChange}
+                                    required
+                                />
+                                <button type='submit' >
+                                    Sign Up
+                                </button>
+                            </form>
 
-                    </div>
-                    <div className='bottom' >
-                        Already registered?
-                        <Link to='/login' >
-                            Login
-                        </Link>
+                        </div>
+                        <div className='bottom' >
+                            Already registered?
+                            <Link to='/login' >
+                                Login
+                            </Link>
+                        </div>
                     </div>
                 </div>
+
             </div>
-
-        </div>
+        </>
     )
 }
 

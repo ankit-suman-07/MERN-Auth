@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import "./style.css";
+
+import Logo from "./assets/logo.jpg";
 
 const Login = () => {
     const [loginData, setLoginData] = useState({
@@ -9,6 +12,7 @@ const Login = () => {
     });
 
     const [message, setMessage] = useState("");
+    const [greet, setGreet] = useState("");
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
@@ -34,40 +38,50 @@ const Login = () => {
         }));
     }
     return (
-        <div>
-            <h3>Login Page</h3>
-            <form onSubmit={handleFormSubmit} >
-                <input
-                    type='text'
-                    name='username'
-                    placeholder='Username'
-                    value={loginData.username}
-                    onChange={handleLoginChange}
-                    required
-                />
-                <input
-                    type='password'
-                    name='password'
-                    placeholder='Password'
-                    value={loginData.password}
-                    onChange={handleLoginChange}
-                    required
-                />
-                <p>
-                    {
-                        <span>{message}</span>
-                    }
-                </p>
-                <button type='submit' >
-                    Login
-                </button>
-                <p>
-                    Not regisstered?
+        <div className='outer' >
+            <div className='box' >
+                <div className='image' >
+                    <img src={Logo} />
+                </div>
+                <div className='form' >
+                    <div className='head login' >
+                        Login
+                    </div>
+                    <div className='inner' >
+                        <span className='error' >{message}</span>
+                        <span className='greet' >{greet}</span>
+                        <form onSubmit={handleFormSubmit} >
+                            <input
+                                type='text'
+                                name='username'
+                                placeholder='Username'
+                                value={loginData.username}
+                                onChange={handleLoginChange}
+                                required
+                            />
+                            <input
+                                type='password'
+                                name='password'
+                                placeholder='Password'
+                                value={loginData.password}
+                                onChange={handleLoginChange}
+                                required
+                            />
+                            <button type='submit' className='login-btn'>
+                                Login
+                            </button>
+                        </form>
+
+                    </div>
+                    <div className='bottom' >
+                        Not regisstered?
                     <Link to='/signup' >
                         Register
                     </Link>
-                </p>
-            </form>
+                    </div>
+                </div>
+            </div>
+
         </div>
     )
 }
