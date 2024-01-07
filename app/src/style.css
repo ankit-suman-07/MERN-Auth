@@ -122,7 +122,7 @@ button {
 
 .error,
 .greet {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 600;
     display: flex;
     gap: 5px;
@@ -131,10 +131,20 @@ button {
 
 .error {
     color: red;
+    display: flex;
+        align-items: center;
+        justify-content: center;
 }
 
 .greet {
     color: green;
+    display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .show-pass {
+        color: #333333;
 }
 .page-top {
     position: fixed;

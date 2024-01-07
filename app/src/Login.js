@@ -24,10 +24,10 @@ const Login = () => {
         try {
             const response = await axios.post('http://localhost:8000/login', loginData);
             const { success, message } = response.data;
-            setMessage(message);
+            setGreet(message);
 
         } catch (error) {
-            setMessage(error.response.data.error);
+            setMessage("*" + error.response.data.error);
         }
         setLoginData({
             username: '',

@@ -16,7 +16,12 @@ const SignUp = () => {
     });
 
     const [message, setMessage] = useState("");
+    const [length, setLength] = useState("");
+    const [digit, setDigit] = useState("");
+    const [letter, setLetter] = useState("");
+    const [special, setSpecial] = useState("");
     const [greet, setGreet] = useState("");
+    const [valid, setValid] = useState(false);
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
@@ -24,7 +29,7 @@ const SignUp = () => {
             const response = await axios.post('http://localhost:8000/register', signUpData);
             setGreet(response.data.message);
         } catch (error) {
-            setMessage(error.response.data.error);
+            setMessage("*" + error.response.data.error);
         }
         setSignUpData({
             username: '',
@@ -34,6 +39,42 @@ const SignUp = () => {
 
     const handleSignUpChange = (e) => {
         const { name, value } = e.target;
+
+        if (name === "password") {
+            if (value.length < 8) {
+                setLength("*Must be atleast 8 characters.");
+                setValid(false);
+            }
+            else {
+                setLength("");
+                setValid(true);
+            }
+            if (/\d/.test(value)) {
+                setDigit("");
+                setValid(true);
+            }
+            else {
+                setDigit("*Must contain atleast 1 digit.");
+                setValid(false);
+            }
+            if (/[a-zA-Z]/.test(value)) {
+                setLetter("");
+                setValid(true);
+            }
+            else {
+                setLetter("*Must contain atleast 1 alphabet.");
+                setValid(false);
+            }
+            if (/[^a-zA-Z0-9]/.test(value)) {
+                setSpecial("");
+                setValid(true);
+            }
+            else {
+                setSpecial("*Must contain atleast 1 special character.");
+                setValid(false);
+            }
+        }
+
         setSignUpData((prevData) => ({
             ...prevData,
             [name]: value
@@ -53,6 +94,10 @@ const SignUp = () => {
                         </div>
                         <div className='inner' >
                             <span className='error' >{message}</span>
+                            <span className='error' >{length}</span>
+                            <span className='error' >{letter}</span>
+                            <span className='error' >{digit}</span>
+                            <span className='error' >{special}</span>
                             <span className='greet' >{greet}</span>
                             <form onSubmit={handleFormSubmit} >
                                 <div className='input' >
@@ -81,11 +126,18 @@ const SignUp = () => {
                                         required
                                     />
                                 </div>
+                                <span className='greet show-pass' >{signUpData.password}</span>
 
+                                {
+                                    valid ?
+                                        <button type='submit'>
+                                            Sign Up
+                                        </button> :
+                                        <button type='submit' disabled >
+                                            Sign Up
+                                        </button>
+                                }
 
-                                <button type='submit' >
-                                    Sign Up
-                                </button>
                             </form>
 
                         </div>
