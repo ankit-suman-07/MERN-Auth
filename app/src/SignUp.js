@@ -87,7 +87,7 @@ const SignUp = () => {
             <div className='outer' >
                 <div className='box' >
                     <div className='image' >
-                        <img src={Logo} />
+                        <img src={Logo} alt='logo-icon' />
                     </div>
                     <div className='form' >
                         <div className='head' >
@@ -103,7 +103,7 @@ const SignUp = () => {
                             <form onSubmit={handleFormSubmit} >
                                 <div className='input' >
                                     <div className='input-logo' >
-                                        <img src={Face} />
+                                        <img src={Face} alt="user-icon" />
                                     </div>
                                     <input
                                         type='text'
@@ -116,7 +116,7 @@ const SignUp = () => {
                                 </div>
                                 <div className='input' >
                                     <div className='input-logo' >
-                                        <img src={Lock} />
+                                        <img src={Lock} alt='shild-password' />
                                     </div>
                                     <input
                                         type='password'

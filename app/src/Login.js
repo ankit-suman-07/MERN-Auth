@@ -25,6 +25,7 @@ const Login = () => {
             const response = await axios.post('http://localhost:8000/login', loginData);
             const { success, message } = response.data;
             setGreet(message);
+            console.log(success);
 
         } catch (error) {
             setMessage("*" + error.response.data.error);
@@ -48,7 +49,7 @@ const Login = () => {
         <div className='outer' >
             <div className='box' >
                 <div className='image' >
-                    <img src={Logo} />
+                        <img src={Logo} alt="shield-logo" />
                 </div>
                 <div className='form' >
                     <div className='head login' >
@@ -60,7 +61,7 @@ const Login = () => {
                             <form onSubmit={handleFormSubmit} >
                                 <div className='input' >
                                     <div className='input-logo' >
-                                        <img src={Face} />
+                                        <img src={Face} alt="user-icon" />
                                     </div>
                                     <input
                                         type='text'
@@ -73,7 +74,7 @@ const Login = () => {
                                 </div>
                                 <div className='input' >
                                     <div className='input-logo' >
-                                        <img src={Lock} />
+                                        <img src={Lock} alt="lock-icon" />
                                     </div>
                                     <input
                                         type='password'
