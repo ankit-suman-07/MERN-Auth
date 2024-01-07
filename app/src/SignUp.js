@@ -43,36 +43,37 @@ const SignUp = () => {
         if (name === "password") {
             if (value.length < 8) {
                 setLength("*Must be atleast 8 characters.");
-                setValid(false);
             }
             else {
                 setLength("");
-                setValid(true);
             }
             if (/\d/.test(value)) {
                 setDigit("");
-                setValid(true);
             }
             else {
                 setDigit("*Must contain atleast 1 digit.");
-                setValid(false);
             }
             if (/[a-zA-Z]/.test(value)) {
                 setLetter("");
-                setValid(true);
             }
             else {
                 setLetter("*Must contain atleast 1 alphabet.");
-                setValid(false);
             }
             if (/[^a-zA-Z0-9]/.test(value)) {
                 setSpecial("");
-                setValid(true);
             }
             else {
                 setSpecial("*Must contain atleast 1 special character.");
+
+            }
+
+            if ((value.length < 8) || !(/\d/.test(value)) || !(/[a-zA-Z]/.test(value)) || !(/[^a-zA-Z0-9]/.test(value))) {
                 setValid(false);
             }
+            else {
+                setValid(true);
+            }
+
         }
 
         setSignUpData((prevData) => ({
