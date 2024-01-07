@@ -8,7 +8,7 @@ const PageTop = () => {
         <div className='page-top' >
             <div className='top-logo' >
                 <div className='main-logo' >
-                    <img src={ } />
+                    <img src={MainLogo} />
                 </div>
                 <div className='main-text' >
                     S.H.I.E.L.D.

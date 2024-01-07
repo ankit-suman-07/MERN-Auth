@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import "./style.css";
 
+import PageTop from './PageTop';
+import PageBottom from './PageBottom';
+
 import Logo from "./assets/logo.jpg";
+import Face from "./assets/businessman.png";
+import Lock from "./assets/security.png";
 
 const Login = () => {
     const [loginData, setLoginData] = useState({
@@ -38,6 +43,8 @@ const Login = () => {
         }));
     }
     return (
+        <>
+            <PageTop />
         <div className='outer' >
             <div className='box' >
                 <div className='image' >
@@ -50,23 +57,35 @@ const Login = () => {
                     <div className='inner' >
                         <span className='error' >{message}</span>
                         <span className='greet' >{greet}</span>
-                        <form onSubmit={handleFormSubmit} >
-                            <input
-                                type='text'
-                                name='username'
-                                placeholder='Username'
-                                value={loginData.username}
-                                onChange={handleLoginChange}
-                                required
-                            />
-                            <input
-                                type='password'
-                                name='password'
-                                placeholder='Password'
-                                value={loginData.password}
-                                onChange={handleLoginChange}
-                                required
-                            />
+                            <form onSubmit={handleFormSubmit} >
+                                <div className='input' >
+                                    <div className='input-logo' >
+                                        <img src={Face} />
+                                    </div>
+                                    <input
+                                        type='text'
+                                        name='username'
+                                        placeholder='Username'
+                                        value={loginData.username}
+                                        onChange={handleLoginChange}
+                                        required
+                                    />
+                                </div>
+                                <div className='input' >
+                                    <div className='input-logo' >
+                                        <img src={Lock} />
+                                    </div>
+                                    <input
+                                        type='password'
+                                        name='password'
+                                        placeholder='Password'
+                                        value={loginData.password}
+                                        onChange={handleLoginChange}
+                                        required
+                                    />
+                                </div>
+
+
                             <button type='submit' className='login-btn'>
                                 Login
                             </button>
@@ -74,15 +93,17 @@ const Login = () => {
 
                     </div>
                     <div className='bottom' >
-                        Not regisstered?
-                    <Link to='/signup' >
+                            Not registered?
+                            <Link to='/' >
                         Register
                     </Link>
                     </div>
                 </div>
             </div>
 
-        </div>
+            </div>
+            <PageBottom />
+        </>
     )
 }
 
